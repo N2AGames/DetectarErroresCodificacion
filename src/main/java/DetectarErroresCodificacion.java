@@ -29,7 +29,8 @@ public class DetectarErroresCodificacion {
                             int numLinea = 0;
                             while ((linea = reader.readLine()) != null) {
                                 numLinea++;
-                                if (linea.contains("\uFFFD")) { // carácter de reemplazo
+                                // Detectar caracteres problemáticos: \uFFFD (carácter de reemplazo) y ï¿½
+                                if (linea.contains("\uFFFD") || linea.contains("ï¿½")) {
                                     lineasConError.add(numLinea);
                                 }
                             }
